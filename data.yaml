@@ -1,0 +1,8 @@
+
+    path: C:/Users/Albert/Documents/A_Programacao/_GITIGNORE/cataovo-annotations/YOLOv10-structure
+    train: images/train  
+    val: images/val      
+    
+    names:
+      0: egg
+    

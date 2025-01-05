@@ -1,0 +1,1 @@
+.\.venv-yolov10\Scripts\activate.bat

@@ -1,0 +1,136 @@
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+**/.apt_generated/
+**/.classpath
+.factorypath
+**/.project
+**/.settings/
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+_GITIGNORE/
+*.ipch
+
+JPA_Hibernate/first-test/mysql-data/
+**/mysql-data/
+
+**/.idea/
+**/.vscode/
+**/.vs
+
+**/grafana-storage/
+
+# JSF/*/target/
+# JSF/*/out/
+
+**/target/
+**/out/
+
+**/*.out
+**/*.o
+**/*.d
+
+**/mongodb_data/
+**/.env
+
+# C/*/*.exe
+# C/*.exe
+**/*.exe
+
+**/node_modules/
+
+*/**/.gitignore
+
+# VSCODE
+**/x64/
+**/x86/
+**/.cproject
+**/.vs
+**/_Dependencies/
+**/*.sln
+**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
+**/*.h.gch # compiled header files
+
+**/*.class
+
+**/.metadata
+
+**/.venv*
+**/__pycache__
+**/.pytest_cache
+
+**/client.keystore
+**/client.truststore
+**/server.keystore
+**/server.truststore
+
+**/docker-data/
+
+#*/mvnw
+#*/mvnw.cmd
+
+**/*.egg-info 
+**/*.caffemodel
+# Not really necessary to exclude *.prototxt
+#**/*.prototxt 
+**/*.pb
+**/*.keras
+**/*.hd5
+**/wandb/
+**/*.h5
+**/*.weights.h5
+
+!libs/x64/opencv_java4100.dll # didnt work
+!libs/x86/opencv_java4100.dll # didnt work
+**/*.dll
+**/*.so
+**/*.lib
+
+tensorflow/04_lenet_model_malaria/preprocessed_*
+tensorflow/04_lenet_model_malaria/artifacts
+tensorflow/04_lenet_model_malaria/raw_dataset
+tensorflow/*/datasets/
+tensorflow/*/tfrecords
+
+**/.ipynb_checkpoints
+**/evaluation*/
+#*/*/train/
+#*/*/val/
+*/*/bundle/
+YOLOv10-structure.zip
+Ground-Truth-Evaluation/yolov10/
+
+analises/
+GCMS/GCMS-Albert-Sobral*/

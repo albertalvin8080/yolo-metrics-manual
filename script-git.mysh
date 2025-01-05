@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# git pull
+
+list=("feat" "wip" "fix" "build" "chore" "style" "refactor" "perf" "revert" "test" "docs")
+# list=("feat" "wip" "fix" "build" "chore" "style" "refactor" "perf" "revert" "test")
+
+echo "Choose the conventional commit:"
+for i in "${!list[@]}"; do
+    # NOTE: %-?d indents to the right, while %-?s indents to the left.
+    printf "%2d - %-10s" "$i" "${list[$i]}"
+    # Add a newline after every two items or at the last element
+    if (( (i + 1) % 2 == 0 || i == ${#list[@]} - 1 )); then
+        echo
+    fi
+done
+
+# Flush stdin buffer
+read -t 1 -n 10000
+
+read -p ":" conv_op
+choice=${list[$conv_op]}
+
+if [[ ! $conv_op =~ ^[0-9]+$ || -z $choice ]]; then
+    echo "No valid commit type choice. Exiting."
+    exit 1
+fi
+
+# echo
+read -p "$choice: " commit_message
+echo
+
+git add .
+echo
+
+git commit -m "$choice: $commit_message"
+echo
+
+git push
+echo
+
+read -p "Press any key to close..."
