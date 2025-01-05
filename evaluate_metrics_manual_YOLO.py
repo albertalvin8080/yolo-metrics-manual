@@ -72,6 +72,7 @@ def evaluate(
                 )
 
         total_ground_truth += len(ground_truth_boxes)
+        print(f"{total_ground_truth} - {len(ground_truth_boxes)}")
 
         results = model.predict(
             img,
@@ -83,11 +84,11 @@ def evaluate(
 
         detected_boxes = decoder(results, image_shape=(480, 640), onnx=False)
         before_nms = len(detected_boxes)
-        # NMS apparently not being necessary.
-        detected_boxes = some_utils.non_max_suppression(detected_boxes, iou_threshold=iou_nms_threshold)
-        after_nms = len(detected_boxes)
-        if after_nms != before_nms:
-            print(len(detected_boxes))
+        # NMS doesn't change anything, it's most probably already being applied inside predict().
+        # detected_boxes = some_utils.non_max_suppression(detected_boxes, iou_threshold=iou_nms_threshold)
+        # after_nms = len(detected_boxes)
+        # if after_nms != before_nms:
+        #     print(len(detected_boxes))
 
         matched_gt = set()
         matched_detections = set()
@@ -129,29 +130,10 @@ def evaluate(
 
         concerning = False
         if fp > 0 or fn > 0:
-            print(f"{img_path}\n-tp: {tp}\n-fp: {fp}\n-fn: {fn}")
+            # print(f"{img_path}\n-tp: {tp}\n-fp: {fp}\n-fn: {fn}")
             concerning = True
 
-        # Shadow effect: Draw text with a thicker, dark border
-        # cv.putText(
-        #     img,
-        #     f"Detections: {current_detections}, GroundTruth: {ground_truth_boxes_len}, Precision: {individual_precision:.5f}, Recall: {individual_recall:.5f}",
-        #     (10, 30),
-        #     cv.FONT_HERSHEY_SIMPLEX,
-        #     0.6,  # fontScale
-        #     (0, 0, 0),  # border color (black)
-        #     4,  # border thickness
-        #     cv.LINE_AA,
-        # )
-        # cv.putText(
-        #     img,
-        #     f"Detections: {current_detections}, GroundTruth: {ground_truth_boxes_len}, Precision: {individual_precision:.5f}, Recall: {individual_recall:.5f}",
-        #     (10, 30),
-        #     cv.FONT_HERSHEY_SIMPLEX,
-        #     0.6,  # fontScale
-        #     (0, 255, 0),  # color
-        #     2,  # thickness
-        # )
+        
         new_img_path = evaluation + img_path[img_path.rfind("/") + 1 : -4] + ".png"
         if should_save or concerning:
             cv.imwrite(new_img_path, img)
